@@ -1,0 +1,10 @@
+[package]
+name = "helix-discord-rpc"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+abi_stable = "0.11.3"
+discord-rich-presence = "0.2.5"
+env_logger = "0.11.8"
+steel-core = { version = "0.7.0", features = ["dylibs", "sync"] }
