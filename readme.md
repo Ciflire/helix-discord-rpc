@@ -8,9 +8,14 @@ You need to
 
 # Installation
 
-It is not possible to install from git as of now, or at least it has not been tested. First clone the repo, then go inside the folder and run
+You can either clone this repository and run
 ```
-  forge install
+forge install
+```
+
+Or you can just install from the git using
+```
+forge pkg install --git https://github.com/Ciflire/helix-discord-rpc.git
 ```
 
 Then you need to add the plugin to your `init.scm`, i recommend that you prefix it.
