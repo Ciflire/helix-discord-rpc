@@ -18,8 +18,6 @@
 
 (register-hook! 'document-focus-lost (lambda (doc-id) (if is-connected (begin (DiscordRPC::set_activity server (to-string (editor-document->path doc-id)) (helix-find-workspace))))))
 
-(register-hook! 'post-insert-char (lambda (char) (char)))
-
 ;;@docs
 ; Connects the server to discord's websocket
 (define (discord-rpc-connect) (
