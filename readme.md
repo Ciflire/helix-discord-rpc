@@ -14,9 +14,8 @@ It is not possible to install from git as of now, or at least it has not been te
 ```
 
 Then you need to add the plugin to your `init.scm`, i recommend that you prefix it.
-```sheme
+```lisp
 (require (prefix-in helix-discord-rpc. "helix-discord-rpc/helix-discord-rpc.scm"))
-  
 ```
 
 The server will auto-start and the activity will be setup once you OPEN a file.

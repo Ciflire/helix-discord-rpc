@@ -14,8 +14,10 @@ pub fn get_asset(filename: String) -> String {
         "agda" => "agda".to_string(),
         "ahk" => "ahk".to_string(),
         "lagda" => "agda".to_string(),
+        "md" => "markdown".to_string(),
         "prop" => "android".to_string(),
         "rs" => "rust".to_string(),
+
         "scm" => "lisp".to_string(),
 
         _ => "python".to_string(),
