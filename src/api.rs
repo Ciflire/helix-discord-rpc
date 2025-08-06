@@ -7,7 +7,7 @@ use crate::discord_rpc::DiscordRPC;
 
 declare_module!(helix_discord_rpc_steel_module);
 
-/// Declare the Steel module which will be dynamically loaded
+/// This registers the functions we will be calling from the steel module
 fn helix_discord_rpc_steel_module() -> FFIModule {
     let mut module = FFIModule::new("steel/helix-discord-rpc");
 
