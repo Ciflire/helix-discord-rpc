@@ -7,24 +7,38 @@ use std::{error::Error, path::Path};
 pub fn get_asset(filename: String) -> String {
     let extension = Path::new(&filename).extension().unwrap().to_str().unwrap();
     let res = match filename.as_str() {
-        "Cargo.toml" => "cargo".to_string(),
-        "Cargo.lock" => "cargo".to_string(),
-        "hyprland.conf" => "hyprland".to_string(),
+        "Cargo.toml" | "Cargo.lock" => "cargo".to_string(),
+        "hyprland.conf" | "hyprlock.conf" | "hyprpaper.conf" | "hypridle.conf" => {
+            "hyprland".to_string()
+        }
+        "CMakeLists.txt" => "cmake".to_string(),
+        ".gitignore" | ".gitsubmodules" => "git".to_string(),
         _ => String::new(),
     };
     if !res.is_empty() {
         return res;
     }
     match extension {
-        "agda" => "agda".to_string(),
-        "ahk" => "ahk".to_string(),
-        "lagda" => "agda".to_string(),
+        "go" => "go".to_string(),
+        "c" | "h" => "c".to_string(),
+        "cpp" | "hpp" => "cpp".to_string(),
+        "css" | "scss" => "css".to_string(),
+        "html" => "html".to_string(),
+        "java" | "class" => "java".to_string(),
+        "js" => "js".to_string(),
+        "json" => "json".to_string(),
         "md" => "markdown".to_string(),
-        "prop" => "android".to_string(),
+        "nix" => "nix".to_string(),
+        "py" => "python".to_string(),
         "rs" => "rust".to_string(),
-
-        "scm" => "lisp".to_string(),
-
+        "scm" | "ss" => "scheme".to_string(),
+        "toml" => "toml".to_string(),
+        "ts" => "ts".to_string(),
+        "typ" => "typst".to_string(),
+        "xaml" => "xaml".to_string(),
+        "xml" => "xml".to_string(),
+        "yaml" => "yaml".to_string(),
+        "zig" => "zig".to_string(),
         _ => "helix".to_string(),
     }
 }
