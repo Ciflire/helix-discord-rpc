@@ -3,6 +3,10 @@ name = "helix-discord-rpc"
 version = "0.1.0"
 edition = "2024"
 
+[lib]
+name = "helix_discord_rpc"
+crate-type = ["cdylib"]
+
 [dependencies]
 abi_stable = "0.11.3"
 discord-rich-presence = "0.2.5"
