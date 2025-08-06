@@ -23,7 +23,12 @@ Then you need to add the plugin to your `init.scm`, i recommend that you prefix 
 (require (prefix-in helix-discord-rpc. "helix-discord-rpc/helix-discord-rpc.scm"))
 ```
 
-The server will auto-start and the activity will be setup once you OPEN a file.
+You may add
+
+```
+(discord-rpc-connect)
+```
+To you `init.scm` to set the activity when opening helix though i do not recommend it. There is an issue at the moment, multiple client cannot connect at the same and it takes some time to fail so do it at your own risk.
 
 # Features
 

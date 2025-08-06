@@ -26,6 +26,4 @@
                                "Websocket already connected"
                                (begin (DiscordRPC::connect server) (set! is-connected #true) "Websocket connected")))
 
-(discord-rpc-connect)
-
 (provide discord-rpc-connect)
