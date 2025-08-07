@@ -4,6 +4,8 @@
 
 ;; Cogs imports
 (require "helix/editor.scm")
+(require "helix/misc.scm")
+(require "helix/components.scm")
 
 ;; dylibs imports
 (#%require-dylib "libhelix_discord_rpc"
@@ -15,8 +17,31 @@
 
 (define server (DiscordRPC::new))
 (define is-connected #false)
+(define row 0)
+(define col 0)
 
-(register-hook! 'document-focus-lost (lambda (doc-id) (if is-connected (begin (DiscordRPC::set_activity server (to-string (editor-document->path doc-id)) (helix-find-workspace))))))
+(define (get-cursor-row-col)
+  (match (current-cursor)
+    [#f ; checks whether if cursor is invisible?
+      (set-status! "No primary cursor is visible")]
+    [(list pos kind) ; when visible, it's a list of Position? & CursorKind (wtf is that? [normal/select/visual?])
+      (set! row (position-row pos))
+      (set! col (position-col pos))]))
+
+(register-hook!
+  'document-focus-lost
+  (lambda
+    (doc-id)
+    (if
+      is-connected
+      (begin
+        (get-cursor-row-col)
+        (DiscordRPC::set_activity
+          server
+          (to-string (editor-document->path doc-id))
+          (helix-find-workspace)
+          row
+          col)))))
 
 ;;@docs
 ; Connects the server to discord's websocket

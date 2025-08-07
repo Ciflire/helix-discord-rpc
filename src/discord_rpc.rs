@@ -1,4 +1,5 @@
-use std::path::{Path, PathBuf};
+use std::path::Path;
+use std::path::PathBuf;
 
 use discord_rich_presence::{
     DiscordIpc, DiscordIpcClient,
@@ -6,7 +7,7 @@ use discord_rich_presence::{
 };
 use steel::rvals::Custom;
 
-use crate::assets::{self, get_asset};
+use crate::assets::get_asset;
 
 pub struct DiscordRPC {
     ipc_client: DiscordIpcClient,
@@ -30,10 +31,15 @@ impl DiscordRPC {
     }
 
     /// Sets the activity with the correct language icon
-    pub fn set_activity(&mut self, path: String, workspace: String) {
+    pub fn set_activity(&mut self, path: String, workspace: String, row: usize, col: usize) {
         let binding = path.clone();
         let filename = Path::new(&binding).file_name().unwrap().to_str().unwrap();
-        let state = "Editing ".to_string() + filename;
+        let state = "Editing ".to_string()
+            + filename
+            + " "
+            + &row.to_string()
+            + ":"
+            + &(col - 6).to_string();
         let binding = workspace.clone();
         let folder = Path::new(&binding).file_name().unwrap().to_str().unwrap();
         let details = "Workspace ".to_string() + folder;
