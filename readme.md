@@ -44,3 +44,7 @@ The idea is to match the features of [vscord](https://github.com/leonardssh/vsco
 - [ ] LSP workspace/file diagnostics
 - [ ] Configuration ?
 
+# Thanks
+
+- Thanks to [vscord](https://github.com/leonardssh/vscord) for there assets
+- Thanks to [presence.nvim](https://github.com/andweeb/presence.nvim) for giving the name to the project (hxcord was kind of a tongue twister)
